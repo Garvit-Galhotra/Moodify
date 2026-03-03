@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Form from "../components/Form";
+import FormGroup from "../components/FromGroup";
 import "../styles/form.scss";
 import { useAuth } from "../hooks/useAuth";
 import { useNavigate, Link } from "react-router";
@@ -14,7 +14,6 @@ const Login = () => {
 
   async function handleSubmit(e) {
     e.preventDefault();
-
     await handleLogin(email, password);
     navigate("/");
   }
@@ -23,21 +22,25 @@ const Login = () => {
     <main className="form-container">
       <form onSubmit={handleSubmit}>
         <h1>Login</h1>
-        <Form
+        <FormGroup
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
           label="email"
           placeholder="Enter Email"
         />
-        <Form
+        <FormGroup
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
           label="password"
           placeholder="Enter Password"
         />
         <button className="button primary-button">Login</button>
         <p>
-          Have an account <Link to="/register">Register Here</Link>.
+          Don't Have an account <Link to="/register">Register Here.</Link>
         </p>
       </form>
     </main>

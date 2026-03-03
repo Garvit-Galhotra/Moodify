@@ -6,7 +6,11 @@ const api = axios.create({
 });
 
 export const register = async (username, email, password) => {
-  const response = await api.post("/register", { username, email, password });
+  const response = await api.post("/register", {
+    username,
+    email,
+    password,
+  });
   return response.data;
 };
 
@@ -20,7 +24,7 @@ export const getMe = async () => {
   return response.data;
 };
 
-export const Logout = async () => {
-  const response = await api.get("/logout");
+export const logout = async () => {
+  const response = api.get("/logout");
   return response.data;
 };
