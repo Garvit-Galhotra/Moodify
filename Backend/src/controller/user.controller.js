@@ -1,7 +1,6 @@
 const userModel = require("../model/user.model");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-const blackListModel = require("../model/blacklist.model");
 const redis = require("../config/cache");
 
 async function registerUser(req, res) {

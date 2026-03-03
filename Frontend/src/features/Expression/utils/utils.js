@@ -1,6 +1,6 @@
 import { FaceLandmarker, FilesetResolver } from "@mediapipe/tasks-vision";
 
-export const init = async ({ landmarkerRef, videoRef, streamRef }) => {
+export const init = async (landmarkerRef, stream, videoRef) => {
   const vision = await FilesetResolver.forVisionTasks(
     "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@latest/wasm",
   );
@@ -15,14 +15,11 @@ export const init = async ({ landmarkerRef, videoRef, streamRef }) => {
     numFaces: 1,
   });
 
-  streamRef.current = await navigator.mediaDevices.getUserMedia({
-    video: true,
-  });
-  videoRef.current.srcObject = streamRef.current;
+  stream = await navigator.mediaDevices.getUserMedia({ video: true });
+  videoRef.current.srcObject = stream;
   await videoRef.current.play();
 };
-
-export const detect = ({ landmarkerRef, videoRef, setExpression }) => {
+export const detect = (landmarkerRef, videoRef, setExpression) => {
   if (!landmarkerRef.current || !videoRef.current) return;
 
   const results = landmarkerRef.current.detectForVideo(

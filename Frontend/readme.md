@@ -1,13 +1,7 @@
-# MOODIFY
+# Testing Google's Face recognition
 
-In this Project we are going to build a Facial expression Music player
+After some folder structure and all we made the face recognition comes to life
 
-# Workflow
+# Making the frontend for Auth API
 
-1. App will detect the faical expression using the web cam
-2. App will play the music according to facial expression
-
-# Research (Google Only) --> No GPT
-
-
-
+-> Using 4 layer of React Architecture
